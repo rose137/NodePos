@@ -1,8 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <!-- Toolbar Modern -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCart"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/babyblue"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Tombol Back -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/arrow_back"
+                android:contentDescription="Kembali"
+                app:tint="@android:color/white" />
+
+            <!-- Judul Toolbar -->
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Keranjang Belanja"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <!-- Tombol Hapus di kanan pojok -->
+            <ImageButton
+                android:id="@+id/btnCheckListAll"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_checklist"
+                android:contentDescription="Checklist"
+                app:tint="@android:color/white" />
+
+            <!-- Tombol Hapus di kanan pojok -->
+            <ImageButton
+                android:id="@+id/btnDeleteAll"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="Hapus Semua"
+                app:tint="@android:color/white" />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <!-- RecyclerView menampilkan item cart -->
     <androidx.recyclerview.widget.RecyclerView

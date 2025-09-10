@@ -9,6 +9,8 @@ public class productModel {
     private String imageUrl;
     private int stock; // tambahkan stock
     private int Qty;
+    private boolean isChecked = false; // baru
+
 
     public productModel(String id, String name, String kategoriId,String kategoriName, int price, String imageUrl, int stock, int Qty) {
         this.id = id;
@@ -36,4 +38,9 @@ public class productModel {
         return Qty;
     }
     public void setQty(int Qty) { this.Qty = Qty; }
+    // getter & setter isChecked
+    public boolean isChecked() { return isChecked; }
+    public void setChecked(boolean checked) { this.isChecked = checked; }
+
+
 }

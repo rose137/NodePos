@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,15 +19,19 @@ import com.example.nodepos.R;
 import com.example.nodepos.adapter.CartAdapter;
 import com.example.nodepos.model.productModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartFragment extends Fragment {
-
+//    private Toolbar toolbarChart;
     private RecyclerView recyclerView;
     private TextView totalText;
     private Button btnBayar;
-
     private CartAdapter adapter;
+    private ImageButton btnBack, btnCheckListAll, btnDeleteAll;
+    private boolean isChecklistMode = false;
+    private List<productModel> cartList;
+
 
     public CartFragment() {}
 
@@ -39,6 +45,37 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerCart);
         totalText = view.findViewById(R.id.txtTotal);
         btnBayar = view.findViewById(R.id.btnBayar);
+        // Toolbar
+        Toolbar toolbar = view.findViewById(R.id.toolbarCart);
+        btnBack = view.findViewById(R.id.btnBack);
+        btnCheckListAll = view.findViewById(R.id.btnCheckListAll);
+        btnDeleteAll = view.findViewById(R.id.btnDeleteAll);
+
+
+        btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
+
+
+        // Checklist All Button
+        btnCheckListAll.setOnClickListener(v -> {
+            isChecklistMode = !isChecklistMode; // toggle mode
+            adapter.setChecklistMode(isChecklistMode); // kasih tahu adapter
+            adapter.notifyDataSetChanged();
+        });
+
+        // Delete All Button
+        btnDeleteAll.setOnClickListener(v -> {
+            List<productModel> toRemove = new ArrayList<>();
+            for (productModel p : cartList) {
+                if (p.isChecked()) {
+                    toRemove.add(p);
+                }
+            }
+            cartList.removeAll(toRemove);
+            CartManager.getInstance().setCartList(cartList);
+            adapter.notifyDataSetChanged();
+            updateTotal();
+        });
+
 
         // Ambil list dari CartManager
         List<productModel> cartList = CartManager.getInstance().getCartList();

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CartManager {
     private static CartManager instance;
-    private final List<productModel> cartList;
+    private List<productModel> cartList;
 
     private CartManager() {
         cartList = new ArrayList<>();
@@ -71,5 +71,9 @@ public class CartManager {
     // clear cart
     public void clearCart() {
         cartList.clear();
+    }
+
+    public void setCartList(List<productModel> cartList) {
+        this.cartList = cartList;
     }
 }

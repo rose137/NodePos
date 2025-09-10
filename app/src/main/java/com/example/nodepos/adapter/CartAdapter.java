@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private final List<productModel> cartList;
     private final Context context;
     private OnCartChangeListener listener;
+    // di dalam class CartAdapter
+    private boolean checklistMode = false; // default false
+
+
 
     public interface OnCartChangeListener {
         void onCartChanged(int total);
@@ -34,6 +39,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         this.context = context;
         this.cartList = cartList;
     }
+    // method untuk toggle checklist mode
+    public void setChecklistMode(boolean mode) {
+        this.checklistMode = mode;
+    }
+
+
 
     @NonNull
     @Override
@@ -48,6 +59,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.txtProductName.setText(product.getName());
         holder.txtQty.setText(String.valueOf(product.getQty()));
+        // Checkbox visibility
+        holder.checkBox.setVisibility(checklistMode ? View.VISIBLE : View.GONE);
+        holder.checkBox.setChecked(product.isChecked());
+
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            product.setChecked(isChecked);
+        });
+
+
         if (product.getQty() == 0){
             holder.txtPrice.setText("Rp " + (product.getPrice()));
 
@@ -98,6 +118,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         TextView txtProductName, txtQty, txtPrice;
         Button btnPlus, btnMinus;
+        CheckBox checkBox;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -106,6 +127,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             txtPrice = itemView.findViewById(R.id.txtPrice);
             btnPlus = itemView.findViewById(R.id.btnPlus);
             btnMinus = itemView.findViewById(R.id.btnMinus);
+            checkBox = itemView.findViewById(R.id.checkBox); // pastikan ada di layout item_cart.xml
         }
     }
 }

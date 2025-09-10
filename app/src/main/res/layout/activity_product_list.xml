@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- AppBar dengan Toolbar modern -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        android:background="@color/babyblue">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarProductList"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/babyblue"
+            app:title="📦 Daftar Produk"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/arrow_back"
+            app:menu="@menu/menu_product_list"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- RecyclerView daftar produk (grid 3 kolom) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <!-- Tombol tambah produk -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah Produk"
+        app:backgroundTint="@color/babyblue"
+        app:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_add"
+        app:layout_anchor="@id/recyclerViewProducts"
+        app:layout_anchorGravity="bottom|end"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

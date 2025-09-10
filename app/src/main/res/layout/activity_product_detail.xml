@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgProductDetail"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/product_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_placeholder_image"
+            android:background="@drawable/rounded_image_bg" />
+
+        <TextView
+            android:id="@+id/tvDetailName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nama Produk Lengkap"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/imgProductDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDetailPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 25.000"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvDetailCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kategori: Minuman"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailPrice"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+        <TextView
+            android:id="@+id/tvDetailSku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SKU: NP-00123 · Kategori: Minuman"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailCategory"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDetailDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi produk singkat..."
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailSku"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Edit & Delete buttons -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEdit"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDelete"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Hapus"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailDesc"
+            app:layout_constraintStart_toEndOf="@id/btnEdit"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

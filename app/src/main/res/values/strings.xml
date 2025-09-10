@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">NodePOS</string>
+    <string-array name="role_array">
+        <item>Pilih Role</item>
+        <item>Admin</item>
+        <item>Kasir</item>
+        <item>Super Admin</item>
+    </string-array>
+
+    <string-array name="position_array">
+        <item>Pilih Posisi</item>
+        <item>Kasir</item>
+        <item>Manager</item>
+        <item>Supervisor</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Tambahan untuk content description -->
+    <string name="product_image">Gambar produk</string>
+</resources>

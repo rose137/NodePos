@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#5AB7F4</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="babyblue">#5AB7F4</color>
+    <color name="blue_500">#2979FF</color> <!-- Biru Material -->
+    <color name="blue_700">#1565C0</color> <!-- Biru lebih gelap -->
+    <color name="blue_200">#90CAF9</color> <!-- Biru lebih muda -->
+    <color name="status_delivered">#4CAF50</color> <!-- Hijau -->
+    <color name="status_failed">#F44336</color>    <!-- Merah -->
+    <color name="status_process">#2196F3</color>   <!-- Biru -->
+    <color name="status_deliver">#FFEB3B</color>   <!-- Kuning -->
+    <color name="status_default">#9E9E9E</color>   <!-- Abu-abu -->
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+</resources>

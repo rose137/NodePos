@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Grid Lines -->
+    <path
+        android:fillColor="#BDBDBD"
+        android:pathData="M3,21h18v-2H3v2zm0,-5h18v-2H3v2zm0,-5h18v-2H3v2zm0,-5h18V4H3v2z" />
+
+    <!-- Bars -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M5,18h2v-5H5v5zM9,18h2v-10H9v10zM13,18h2v-7h-2v7zM17,18h2v-3h-2v3z" />
+</vector>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5AB7F4">
+
+    <!-- Judul Halaman -->
+    <TextView
+        android:id="@+id/tvRegisterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FDFDFD"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"/>
+    <!-- Container Putih -->
+    <LinearLayout
+        android:id="@+id/registerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/bg_bottom_white"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- NIK -->
+        <EditText
+            android:id="@+id/etRegisterNIK"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="NIK"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:drawablePadding="12dp"
+            android:paddingEnd="16dp"
+            android:drawableStart="@drawable/ic_user"
+            android:background="@drawable/bg_input_blue"
+            android:textColor="#5AB7F4"
+            android:textColorHint="#5AB7F4"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Firstname & Lastname dalam 1 baris -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/etRegisterFirstname"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:hint="Nama Depan"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:paddingStart="16dp"
+                android:drawablePadding="12dp"
+                android:paddingEnd="16dp"
+                android:drawableStart="@drawable/ic_user"
+                android:background="@drawable/bg_input_blue"
+                android:textColor="#5AB7F4"
+                android:textColorHint="#5AB7F4"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etRegisterlastname"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:hint="Nama Belakang"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:drawablePadding="12dp"
+                android:paddingEnd="16dp"
+                android:drawableStart="@drawable/ic_user"
+                android:background="@drawable/bg_input_blue"
+                android:textColor="#5AB7F4"
+                android:textColorHint="#5AB7F4"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Fullname -->
+        <EditText
+            android:id="@+id/etRegisterfullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nama Lengkap"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:drawablePadding="12dp"
+            android:paddingEnd="16dp"
+            android:drawableStart="@drawable/ic_user"
+            android:background="@drawable/bg_input_blue"
+            android:textColor="#5AB7F4"
+            android:textColorHint="#5AB7F4"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/etRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:textSize="14sp"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_email"
+            android:background="@drawable/bg_input_blue"
+            android:textColor="#5AB7F4"
+            android:textColorHint="#5AB7F4"
+            android:paddingStart="16dp"
+            android:drawablePadding="12dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Role & Position dalam 1 baris -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:weightSum="2">
+
+            <Spinner
+                android:id="@+id/spinnerRole"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:background="@drawable/bg_input_blue"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:popupBackground="#FFFFFF"
+                android:layout_marginEnd="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerPosition"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:background="@drawable/bg_input_blue"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:popupBackground="#FFFFFF"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Sisanya tetap -->
+        <!-- Password -->
+        <EditText
+            android:id="@+id/etRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:textSize="14sp"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_lock"
+            android:background="@drawable/bg_input_blue"
+            android:textColor="#5AB7F4"
+            android:textColorHint="#5AB7F4"
+            android:paddingStart="16dp"
+            android:drawablePadding="12dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Konfirmasi Password -->
+        <EditText
+            android:id="@+id/etRegisterConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Konfirmasi Password"
+            android:textSize="14sp"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_lock"
+            android:background="@drawable/bg_input_blue"
+            android:textColor="#5AB7F4"
+            android:textColorHint="#5AB7F4"
+            android:paddingStart="16dp"
+            android:drawablePadding="12dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Tombol Daftar -->
+        <Button
+            android:id="@+id/btnRegisterSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="DAFTAR"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@color/babyblue"
+            android:background="@drawable/btn_login"
+            android:layout_marginTop="24dp"/>
+
+        <!-- Tagline -->
+        <TextView
+            android:id="@+id/tvTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaksi cepat, aman, dan mudah bersama NodePOS."
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Animasi QR -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/qrAnimation"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="12dp"
+            app:lottie_rawRes="@raw/qrcode"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true" />
+
+        <!-- Copyright -->
+        <TextView
+            android:id="@+id/tvCopyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="© 2025 NodePOS • Versi 1.0.0"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Card Error -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password dan Konfirmasi Password tidak sama"
+                android:textColor="#333"
+                android:textSize="13sp"
+                android:padding="16dp"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

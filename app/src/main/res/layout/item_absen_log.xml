@@ -1,0 +1,28 @@
+<!-- res/layout/item_absen_log.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/textJenis"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Check-In"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textTanggal"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="29 Mei 2025" />
+
+    <TextView
+        android:id="@+id/textWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14:33:00" />
+</LinearLayout>

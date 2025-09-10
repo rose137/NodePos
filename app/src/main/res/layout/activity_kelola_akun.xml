@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5AB7F4">
+
+    <!-- Judul Halaman -->
+    <Space
+        android:id="@+id/tvRegisterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="18dp" />
+
+    <!-- Foto Profil (di tengah biru & putih) -->
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_user"
+        android:background="@drawable/bg_circle"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        android:contentDescription="Foto Profil"
+        app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:translationY="40dp"
+        android:elevation="8dp"/>
+
+    <!-- ScrollView untuk semua form -->
+    <ScrollView
+        android:id="@+id/scrollViewRegister"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/imgProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Container Putih -->
+        <LinearLayout
+            android:id="@+id/registerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/bg_bottom_white">
+
+            <TextView
+                android:id="@+id/tvChangeProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubah Foto Profil"
+                android:textSize="14sp"
+                android:textColor="@color/babyblue"
+                android:layout_marginTop="60dp"/> <!-- jarak supaya tidak tabrakan dengan foto -->
+
+            <!-- NIK -->
+            <EditText
+                android:id="@+id/etNIK"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="NIK"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:enabled="false"
+                android:clickable="false"
+                android:paddingEnd="16dp"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="12dp"
+                android:background="@drawable/bg_input_disabled"
+                android:textColor="#5AB7F4"
+                android:textColorHint="#5AB7F4"
+                android:layout_marginTop="12dp"/>
+            <!-- Firstname & Lastname dalam 1 baris -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/etFirstname"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:hint="Nama Depan"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    android:paddingStart="16dp"
+                    android:drawablePadding="12dp"
+                    android:paddingEnd="16dp"
+                    android:drawableStart="@drawable/ic_user"
+                    android:background="@drawable/bg_input_blue"
+                    android:textColor="#5AB7F4"
+                    android:textColorHint="#5AB7F4"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etlastname"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:hint="Nama Belakang"
+                    android:textSize="14sp"
+                    android:inputType="text"
+                    android:paddingStart="16dp"
+                    android:drawablePadding="12dp"
+                    android:paddingEnd="16dp"
+                    android:drawableStart="@drawable/ic_user"
+                    android:background="@drawable/bg_input_blue"
+                    android:textColor="#5AB7F4"
+                    android:textColorHint="#5AB7F4"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+            <!-- Fullname -->
+            <EditText
+                android:id="@+id/etfullname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nama Lengkap"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:drawablePadding="12dp"
+                android:paddingEnd="16dp"
+                android:drawableStart="@drawable/ic_user"
+                android:background="@drawable/bg_input_blue"
+                android:textColor="#5AB7F4"
+                android:textColorHint="#5AB7F4"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Email"
+                android:textSize="14sp"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_email"
+                android:background="@drawable/bg_input_disabled"
+                android:textColor="#5AB7F4"
+                android:textColorHint="#5AB7F4"
+                android:enabled="false"
+                android:clickable="false"
+                android:paddingStart="16dp"
+                android:drawablePadding="12dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Role & Position dalam 1 baris -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:weightSum="2">
+
+                <Spinner
+                    android:id="@+id/spinnerRole"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_blue"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:spinnerMode="dropdown"
+                    android:popupBackground="#FFFFFF"
+                    android:layout_marginEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerPosition"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_blue"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:spinnerMode="dropdown"
+                    android:popupBackground="#FFFFFF"
+                    android:layout_marginStart="8dp"/>
+
+
+            </LinearLayout>
+            <!-- Tombol Daftar -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Simpan"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/babyblue"
+                android:background="@drawable/btn_login"
+                android:layout_marginTop="24dp"/>
+
+
+            <!-- Tagline -->
+            <TextView
+                android:id="@+id/tvTagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaksi cepat, aman, dan mudah bersama NodePOS."
+                android:textColor="#888888"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Animasi QR -->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/qrAnimation"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="12dp"
+                app:lottie_rawRes="@raw/qrcode"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true" />
+
+            <!-- Copyright -->
+            <TextView
+                android:id="@+id/tvCopyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="© 2025 NodePOS • Versi 1.0.0"
+                android:textColor="#888888"
+                android:textSize="10sp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

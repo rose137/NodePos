@@ -1,5 +1,6 @@
 package com.example.nodepos.admin;
 
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,9 +15,11 @@ import android.view.ViewGroup;
 import com.example.nodepos.R;
 import com.example.nodepos.adapter.RiwayatAdapter;
 import com.example.nodepos.model.riwayatModel;
+import com.example.nodepos.repository.historyListRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OngoingFragment extends Fragment {
 
@@ -34,9 +37,21 @@ public class OngoingFragment extends Fragment {
         rvOngoing.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Dummy data Ongoing
-        ongoingList = new ArrayList<>();
-        ongoingList.add(new riwayatModel("ORD123", "On Delivery", "25000", "02-09-2025"));
-        ongoingList.add(new riwayatModel("ORD124", "Processing", "18000", "03-09-2025"));
+        List<riwayatModel> ongoingList;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            ongoingList = historyListRepository.getRiwayatList()
+                    .stream()
+                    .filter(item -> "On Delivery".equals(item.getStatus()) ||
+                            "Processing".equals(item.getStatus()))
+                    .collect(Collectors.toList());
+        } else {
+            ongoingList = new ArrayList<>();
+            for (riwayatModel item : historyListRepository.getRiwayatList()) {
+                if ("On Delivery".equals(item.getStatus()) || "Processing".equals(item.getStatus())) {
+                    ongoingList.add(item);
+                }
+            }
+        }
 
         adapter = new RiwayatAdapter(getContext(), ongoingList);
         rvOngoing.setAdapter(adapter);

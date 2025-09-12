@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Laporan Penjualan"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:id="@+id/tvTotalSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total : Rp 0 (0 Pesanan)"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Tombol Export -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <android.widget.Button
+            android:id="@+id/btnPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate PDF"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/excel"
+            android:drawablePadding="8dp"
+            android:background="@drawable/btn_login"
+            android:layout_marginEnd="12dp"/>
+
+        <android.widget.Button
+            android:id="@+id/btnCsv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/pdf"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_login"
+            android:text="Generate CSV"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

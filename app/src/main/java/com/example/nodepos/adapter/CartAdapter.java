@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,8 +43,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     // method untuk toggle checklist mode
     public void setChecklistMode(boolean mode) {
         this.checklistMode = mode;
+        notifyDataSetChanged();
     }
-
 
 
     @NonNull
@@ -60,9 +61,22 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txtProductName.setText(product.getName());
         holder.txtQty.setText(String.valueOf(product.getQty()));
         // Checkbox visibility
-        holder.checkBox.setVisibility(checklistMode ? View.VISIBLE : View.GONE);
-        holder.checkBox.setChecked(product.isChecked());
+//        holder.checkBox.setVisibility(checklistMode ? View.VISIBLE : View.GONE);
+//        holder.checkBox.setChecked(product.isChecked());
+//
+//        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            product.setChecked(isChecked);
+//        });
 
+        // Tampilkan / sembunyikan checkbox
+        if (checklistMode) {
+            holder.checkBox.setVisibility(View.VISIBLE);
+            holder.checkBox.setChecked(product.isChecked());
+        } else {
+            holder.checkBox.setVisibility(View.GONE);
+        }
+
+        // Saat checkbox diklik, update model
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             product.setChecked(isChecked);
         });
@@ -117,7 +131,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         TextView txtProductName, txtQty, txtPrice;
-        Button btnPlus, btnMinus;
+        ImageButton btnPlus, btnMinus;
         CheckBox checkBox;
 
         public CartViewHolder(@NonNull View itemView) {

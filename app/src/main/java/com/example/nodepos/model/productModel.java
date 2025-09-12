@@ -41,6 +41,10 @@ public class productModel {
     // getter & setter isChecked
     public boolean isChecked() { return isChecked; }
     public void setChecked(boolean checked) { this.isChecked = checked; }
+    @Override
+    public String toString() {
+        return getId() + "    |    " + getName();
+    }
 
 
 }

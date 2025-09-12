@@ -15,26 +15,31 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nodepos.R;
 import com.example.nodepos.absen.absensiActivity;
+import com.example.nodepos.laporan.LaporanPenjualanActivity;
+import com.example.nodepos.model.productModel;
+import com.example.nodepos.repository.ProductDummyRepository;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-
+import com.example.nodepos.repository.historyListRepository;
+import com.example.nodepos.model.riwayatModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class DashboardFragment extends Fragment {
     BarChart barChart;
-    TextView textHari, textTanggal, textJam;
+    TextView textHari, textTanggal, textJam, TotalPenjualan, TotalPesanan, TotalStok;
     ImageView imageTimeIcon;
     Handler timeHandler = new Handler();
     Runnable timeRunnable;
-    CardView absen;
+    CardView absen,laporan;
 
     public DashboardFragment() {
         // Diperlukan constructor kosong
@@ -46,6 +51,7 @@ public class DashboardFragment extends Fragment {
         // Ganti layout ini dengan layout fragment kamu
          View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
+         laporan = view.findViewById(R.id.quickActionCard2);
         absen = view.findViewById(R.id.quickActionCard);
         absen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +60,13 @@ public class DashboardFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        laporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LaporanPenjualanActivity.class);
+                startActivity(intent);
+            }
+        });
          barChart = view.findViewById(R.id.barChart);
         setupBarChart();
 
@@ -62,7 +74,9 @@ public class DashboardFragment extends Fragment {
         textTanggal = view.findViewById(R.id.textTanggal);
         textJam = view.findViewById(R.id.textJam);
         imageTimeIcon = view.findViewById(R.id.imageTimeIcon);
-
+        TotalPenjualan = view.findViewById(R.id.tvTotalPenjualan);
+        TotalPesanan = view.findViewById(R.id.tvTotalPesanan);
+        TotalStok = view.findViewById(R.id.tvTotalStok);
 
         Date now = new Date();
         SimpleDateFormat sdfHari = new SimpleDateFormat("EEEE", new Locale("id", "ID"));
@@ -90,7 +104,40 @@ public class DashboardFragment extends Fragment {
         };
         timeHandler.post(timeRunnable);
 
+        // ambil semua riwayat
+        List<riwayatModel> allRiwayat = historyListRepository.getRiwayatList();
+        List<productModel> allRiwayatProduct = ProductDummyRepository.getProductDummyList();
 
+        int jumlahDelivered = 0;
+        int totalHarga = 0;
+
+
+        for (riwayatModel item : allRiwayat) {
+            if ("Delivered".equalsIgnoreCase(item.getStatus())) {
+                jumlahDelivered++;
+                try {
+                    // harga disimpan sebagai String, ubah ke int
+                    totalHarga += Integer.parseInt(item.getTotalAmount());
+                } catch (NumberFormatException e) {
+                    e.printStackTrace(); // abaikan jika ada format salah
+                }
+            }
+        }
+// tampilkan di TextView, contoh: "Rp. 47.000 (3 pesanan)"
+        String totalDisplay = "Rp. " + String.format("%,d", totalHarga).replace(',', '.') ;
+        String totalDisplayPesanan = "(" + jumlahDelivered + " pesanan)";
+        TotalPenjualan.setText(totalDisplay);
+        TotalPesanan.setText(totalDisplayPesanan);
+
+
+
+        int JumlahStok = 0;
+        for (productModel itemProduct : allRiwayatProduct) {
+            JumlahStok += itemProduct.getStock();
+
+        }
+        String totalDisplayStok = "(" + JumlahStok + " Barang)";
+        TotalStok.setText(totalDisplayStok);
 
         return view;
     }

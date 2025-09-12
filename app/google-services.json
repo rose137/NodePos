@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "616852667966",
+    "project_id": "nodepos-rose",
+    "storage_bucket": "nodepos-rose.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616852667966:android:fd413dcfd25919d8b1db6f",
+        "android_client_info": {
+          "package_name": "com.example.nodepos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH_zrfm2IIYK9IxdA6QcTYFUyBitpvc_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

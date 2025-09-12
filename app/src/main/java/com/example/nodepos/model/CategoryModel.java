@@ -28,11 +28,6 @@ public class CategoryModel {
         return KategoriDesc;
     }
 
-    // Supaya dropdown hanya menampilkan nama
-    @Override
-    public String toString() {
-        return KategoriName;
-    }
 
     public int getImageResId() {
         return iconResId;
@@ -40,6 +35,11 @@ public class CategoryModel {
 
     public String getProductName() {
         return KategoriName;
+    }
+
+    @Override
+    public String toString() {
+        return getKategoriId() + "    |    " + getKategoriName();
     }
 }
 

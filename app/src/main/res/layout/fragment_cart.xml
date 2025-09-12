@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
-    <!-- Toolbar Modern -->
+    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCart"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/babyblue"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -20,7 +21,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <!-- Tombol Back -->
+            <!-- Back -->
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="40dp"
@@ -30,7 +31,7 @@
                 android:contentDescription="Kembali"
                 app:tint="@android:color/white" />
 
-            <!-- Judul Toolbar -->
+            <!-- Title -->
             <TextView
                 android:id="@+id/toolbarTitle"
                 android:layout_width="0dp"
@@ -40,8 +41,9 @@
                 android:text="Keranjang Belanja"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
-            <!-- Tombol Hapus di kanan pojok -->
+                android:textStyle="bold" />
+
+            <!-- Checklist -->
             <ImageButton
                 android:id="@+id/btnCheckListAll"
                 android:layout_width="40dp"
@@ -51,7 +53,7 @@
                 android:contentDescription="Checklist"
                 app:tint="@android:color/white" />
 
-            <!-- Tombol Hapus di kanan pojok -->
+            <!-- Delete -->
             <ImageButton
                 android:id="@+id/btnDeleteAll"
                 android:layout_width="40dp"
@@ -60,34 +62,98 @@
                 android:src="@drawable/ic_delete"
                 android:contentDescription="Hapus Semua"
                 app:tint="@android:color/white" />
-
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- RecyclerView menampilkan item cart -->
+    <!-- Header Kolom -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/babyblue"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Nama Produk"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Qty"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Harga"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="8dp"/>
+        android:paddingHorizontal="8dp"
+        android:clipToPadding="false" />
 
-    <!-- Total Harga -->
-    <TextView
-        android:id="@+id/txtTotal"
+    <!-- Total + Bayar -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="12dp"
-        android:text="Total: Rp 0"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:background="@android:color/white"
+        android:elevation="2dp">
 
-    <!-- Tombol Bayar -->
-    <Button
-        android:id="@+id/btnBayar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bayar"
-        android:backgroundTint="@color/babyblue"
-        android:textColor="@android:color/white"/>
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: Rp 0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="end"
+            android:paddingBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnBayar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="BAYAR"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:backgroundTint="@color/babyblue"
+            android:textColor="@android:color/white"
+            android:stateListAnimator="@null"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
 </LinearLayout>

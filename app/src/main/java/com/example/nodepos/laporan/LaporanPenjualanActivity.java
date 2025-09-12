@@ -29,6 +29,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -65,8 +66,32 @@ public class LaporanPenjualanActivity extends AppCompatActivity {
         rvLaporan.setAdapter(new LaporanAdapter(list));
 
         btnPdf.setOnClickListener(v -> generatePdf(this));
-//        btnExcel.setOnClickListener(v -> generateExcel(this));
+      btnCsv.setOnClickListener(v -> generateCsv(this));
     }
+
+    private void generateCsv(Context ctx) {
+        try {
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm", Locale.getDefault()).format(new Date());
+            File file = new File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS),
+                    "LaporanPenjualan_" + timeStamp + ".csv");
+
+            FileWriter writer = new FileWriter(file);
+            writer.append("OrderID,Status,Total,Tanggal\n");
+            for (riwayatModel item : list) {
+                writer.append(item.getOrderId()).append(",")
+                        .append(item.getStatus()).append(",")
+                        .append(item.getTotalAmount()).append(",")
+                        .append(item.getDate()).append("\n");
+            }
+            writer.flush();
+            writer.close();
+
+            Toast.makeText(ctx, "CSV tersimpan di: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(ctx, "Gagal generate CSV: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     private void generatePdf(Context ctx) {
         try {

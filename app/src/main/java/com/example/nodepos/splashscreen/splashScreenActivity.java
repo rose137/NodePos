@@ -20,7 +20,7 @@ public class splashScreenActivity extends AppCompatActivity {
 
         // Handler untuk delay ke MainActivity
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(this, adminDashboardActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
 
             startActivity(intent);
             finish(); // agar tidak bisa kembali ke splash
